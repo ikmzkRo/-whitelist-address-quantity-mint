@@ -23,6 +23,10 @@ Done in 0.78s.
 6. Deploy contracts code: `npx hardhat run scripts/deploy/ikmzERC721WLAQ.ts --network goerli`
 7. Verify contracts code: `npx hardhat verify --network goerli ${6.CA}`
 
+## Success Code
+- https://dev.to/peterblockman/understand-merkle-tree-by-making-a-nft-minting-whitelist-1148#step-4--verify-users--address-and-quantity
+- https://github.com/peterblockman/merkle-tree-nft-whitelist/tree/feat/simple
+
 ## Ref List
 | Ref | Title |
 | ---- | ---- |
