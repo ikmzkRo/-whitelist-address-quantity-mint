@@ -1,5 +1,27 @@
-# merkletree-contracts
-
+# whitelist-address-quantity-mint
+## Demo
+1. Clone this repository: `git@github.com:ikmzkRo/whitelist-address-quantity-mint.git`
+2. Install packages: `yarn`
+3. Add `.env` file
+```
+PRIVATE_KEY = ""
+ALCHEMY_API_KEY = ""
+ETHERSCAN_API_KEY = ""
+COINMARKETCAP_API_KEY = ""
+REPORT_GAS = "true"
+```
+4. Compile solidity code: `yarn run compile`
+```
+yarn run v1.22.21
+$ hardhat compile
+Nothing to compile
+Done in 0.78s.
+```
+5. Debug testcode: `yarn run test test/IkmzERC721WL.test.ts`
+```
+```
+6. Deploy contracts code: `npx hardhat run scripts/deploy/ikmzERC721WL.ts --network goerli`
+7. Verify contracts code: `npx hardhat verify --network goerli ${6.CA}`
 
 ## Ref List
 | Ref | Title |
