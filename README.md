@@ -20,7 +20,7 @@ Done in 0.78s.
 5. Debug testcode: `yarn run test test/IkmzERC721WLAQ.test.ts`
 ```
 ```
-6. Deploy contracts code: `npx hardhat run scripts/deploy/ikmzERC721WL.ts --network goerli`
+6. Deploy contracts code: `npx hardhat run scripts/deploy/ikmzERC721WLAQ.ts --network goerli`
 7. Verify contracts code: `npx hardhat verify --network goerli ${6.CA}`
 
 ## Ref List
