@@ -17,7 +17,7 @@ $ hardhat compile
 Nothing to compile
 Done in 0.78s.
 ```
-5. Debug testcode: `yarn run test test/IkmzERC721WL.test.ts`
+5. Debug testcode: `yarn run test test/IkmzERC721WLAQ.test.ts`
 ```
 ```
 6. Deploy contracts code: `npx hardhat run scripts/deploy/ikmzERC721WL.ts --network goerli`

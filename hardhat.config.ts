@@ -4,12 +4,14 @@ require("@nomiclabs/hardhat-waffle");
 require("dotenv").config();
 require('@openzeppelin/hardhat-upgrades');
 require("@nomiclabs/hardhat-etherscan");
+require("@nomiclabs/hardhat-ethers");
+require("dotenv").config();
 import { HardhatUserConfig, task } from "hardhat/config";
 import "hardhat-gas-reporter";
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: "0.8.17",
+    version: "0.8.9",
     settings: {
       // コードサイズを最適化
       optimizer: {

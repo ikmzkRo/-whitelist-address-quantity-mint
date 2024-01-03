@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.9;
 
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import "@openzeppelin/contracts/utils/Counters.sol";
@@ -14,17 +14,13 @@ contract IkmzERC721WLAQ is ERC721, Ownable {
     Counters.Counter private _tokenIds;
 
     bytes32 public merkleRoot;
-
-    mapping(address => bool) public whitelistClaimed;
-
+  
     // デプロイ時に計算結果のマークルルートをデプロイする
     constructor(bytes32 merkleRoot_) ERC721('zuyomayo', 'ZTMY') {
         merkleRoot = merkleRoot_;
     }
 
     function whitelistMint(uint256 quantity, bytes32[] calldata merkleProof) public {
-        // require(!whitelistClaimed[msg.sender], "Address already claimed");
-
         bytes32 node = keccak256(abi.encodePacked(msg.sender, quantity));
         require(MerkleProof.verify(merkleProof, merkleRoot, node), 'invalid proof');
 
@@ -34,8 +30,6 @@ contract IkmzERC721WLAQ is ERC721, Ownable {
 
             _tokenIds.increment();
         }
-
-        // whitelistClaimed[msg.sender] = true;
     }
 
     function setMerkleRoot(bytes32 _merkleRoot) public onlyOwner {

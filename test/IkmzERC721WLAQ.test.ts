@@ -29,6 +29,9 @@ const zeroAddress = '0x000000000000000000000000000000000000000000000000000000000
 
 beforeEach(async () => {
   // 一般的には、getSigners()で返される配列の最初の署名者が、スマートコントラクトをデプロイしたアカウント、つまりowner権限を持つこととなります
+  // Followed hardhat test tutorial and got "TypeError: (0 , ethers_1.getAddress) is not a function" error
+  // https://ethereum.stackexchange.com/questions/151234/followed-hardhat-test-tutorial-and-got-typeerror-0-ethers-1-getaddress-is
+  // yarn add --dev hardhat @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
   [owner, notOwner, allowListedUser, notListedUser] = await ethers.getSigners();
 
   // Define the Merkle Tree for whitelist verification
@@ -48,16 +51,13 @@ beforeEach(async () => {
   ];
 
   // https://docs.ethers.org/v5/api/utils/hashing/#utils-solidityKeccak256
-  // ethers.utils.solidityKeccak256はv5.7で実現可能
-  // v6.x以降ではundefinedとなる
-  // TODO: 関数内部で何をしているのか詳細化して, ethersV6で利用できそうな関数を指定する
   const leaves = inputs.map((x) =>
-    ethers.keccak256(
-      ["address", "uint256"],
+    ethers.utils.solidityKeccak256(
+      ['address', 'uint256'],
       [x.address, x.quantity]
     )
   );
-  console.log('leaves', leaves);
+
 
   const tree = new MerkleTree(leaves, keccak256, { sort: true });
   // console.log(tree.toString());
